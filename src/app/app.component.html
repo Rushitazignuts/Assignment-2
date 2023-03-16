@@ -1,47 +1,39 @@
 <h3 class="text-center pt-3 m-4">{{ title }}</h3>
 
-
-
-<!-- <select [(ngModel)]="displaydata" >
-  <option value="default">Choose a Platform</option>
-  <option  *ngFor="let users of displaydata|filter :'platform'"> {{users.platform}}  </option>
-</select>
-<br> -->
-
-
-
-
 <label for="exampleDataList" class="form-label">Choose a Title</label>
-<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..."
- (change) = "nameValue($any($event.target).value)">
+<input
+  class="form-control"
+  list="datalistOptions"
+  id="exampleDataList"
+  placeholder="Type to search..."
+  (change)="nameValue($any($event.target).value)"
+/>
 <datalist id="datalistOptions">
-  <option *ngFor ="let user of displaydata" [value]="user.title">
-  
+  <option *ngFor="let user of displaydata" [value]="user.title"></option>
 </datalist>
-<br>
- <table class="table  table-bordered table-striped w-100">
-  <thead class="table-dark">
-    <tr class="font">
-      <th>title</th>
-      <th>platform</th>
-      <th>score</th>
-      <th>genre</th>
-      <th>editors_choice</th>
-    </tr>
-  </thead>
-  <tbody>
 
-    <tr class="trFont" *ngFor="let users of displaydata">
-      
-
-      <td>{{ users.title }}</td>
-      <td>{{ users.platform }}</td>
-      <td>{{ users.score }}</td>
-      <td>{{ users.genre }}</td>
-      <td>{{ users.editors_choice }}</td>
-    </tr>
-   
-    
-  </tbody>
-</table> 
-
+<div *ngIf="displaydata.length < 100; else elseBlock">
+  <table class="table table-bordered table-striped w-100">
+    <thead class="table-dark">
+      <tr class="font">
+        <th>title</th>
+        <th>platform</th>
+        <th>score</th>
+        <th>genre</th>
+        <th>editors_choice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="trFont" *ngFor="let users of displaydata">
+        <td>{{ users.title }}</td>
+        <td>{{ users.platform }}</td>
+        <td>{{ users.score }}</td>
+        <td>{{ users.genre }}</td>
+        <td>{{ users.editors_choice }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #elseBlock>
+  <app-extra></app-extra>
+</ng-template>

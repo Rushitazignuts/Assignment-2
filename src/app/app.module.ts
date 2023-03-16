@@ -4,26 +4,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './filter.pipe';
-
+import { MatSelectModule } from '@angular/material/select';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TableModule } from 'angular-bootstrap-md';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
-import { SearchPipe } from './search.pipe';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSortModule } from '@angular/material/sort';
+import { ExtraComponent } from './extra/extra.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FilterPipe,
-    
-    SearchPipe,
-    
-    
-    
-  ],
+  declarations: [AppComponent, ExtraComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,10 +24,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     TableModule,
     NoopAnimationsModule,
     MatTableModule,
-    MatAutocompleteModule
-   
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatSortModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
